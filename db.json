@@ -1,0 +1,31 @@
+{
+  "pacientes": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellidos": "Pérez Gómez",
+      "dni": "12345678Z",
+      "fechaNacimiento": "1980-05-10",
+      "telefono": "600123456",
+      "direccion": "Calle Falsa 123, Madrid"
+    },
+    {
+      "id": 2,
+      "nombre": "Ana",
+      "apellidos": "Martínez Ruiz",
+      "dni": "87654321X",
+      "fechaNacimiento": "1992-11-22",
+      "telefono": "611987654",
+      "direccion": "Avda. Libertad 45, Valencia"
+    },
+    {
+      "id": 3,
+      "nombre": "Luis",
+      "apellidos": "Fernández Soto",
+      "dni": "11223344A",
+      "fechaNacimiento": "1975-03-01",
+      "telefono": "699112233",
+      "direccion": "Plaza Mayor 5, Sevilla"
+    }
+  ]
+}

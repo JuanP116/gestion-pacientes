@@ -1,0 +1,133 @@
+
+
+  /* Estilos personalizados para la página About */
+  .about-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .titulo-principal {
+    color: #f1f1f1;
+    position: relative;
+    padding-bottom: 15px;
+  }
+
+  .titulo-principal::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #c8102e, #ffc400);
+  }
+
+  .tarjeta-personalizada {
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .tarjeta-personalizada:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .tarjeta-descripcion .card-header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 15px 20px;
+  }
+
+  .tarjeta-api .card-header {
+    background: linear-gradient(135deg, #c8102e, #e63946);
+    color: white;
+    padding: 15px 20px;
+  }
+
+  .tarjeta-desarrollador .card-header {
+    background: linear-gradient(135deg, #ffb347, #ffcc33);
+    color: #333;
+    padding: 15px 20px;
+  }
+
+  .card-body {
+    background-color: #2c3e50;
+    color: #f1f1f1;
+    padding: 25px;
+  }
+
+  .icono-seccion {
+    font-size: 1.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .enlace-personalizado {
+    color: #ffc400;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+    border-bottom: 1px dashed #ffc400;
+    padding-bottom: 2px;
+  }
+
+  .enlace-personalizado:hover {
+    color: #ffeb3b;
+  }
+
+  .lista-personalizada {
+    list-style-type: none;
+    padding-left: 10px;
+  }
+
+  .lista-personalizada li {
+    margin-bottom: 10px;
+  }
+
+  .desarrollador-info {
+    border-left: 4px solid #ffc400;
+    padding-left: 15px;
+    margin: 15px 0;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .badge {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+  }
+
+  .bg-angular {
+    background-color: #dd0031;
+  }
+
+  .bg-typescript {
+    background-color: #3178c6;
+  }
+
+  .bg-bootstrap {
+    background-color: #7952b3;
+  }
+
+  .bg-html {
+    background-color: #e34c26;
+  }
+
+  .bg-css {
+    background-color: #264de4;
+  }
