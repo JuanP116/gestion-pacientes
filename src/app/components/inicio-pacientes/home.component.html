@@ -1,0 +1,107 @@
+<div class="home-container">
+  <!-- Hero Section con fondo de estadio -->
+  <div class="hero-section">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <img src="assets/logo-football.png" alt="Football Data España" class="logo-hero mb-4">
+      <h1 class="display-3 fw-bold text-white text-shadow">Football Data España</h1>
+      <p class="lead text-white text-shadow mb-4">La experiencia definitiva para los aficionados al fútbol español</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary btn-lg me-3 shadow-sm" routerLink="/list">
+          <i class="fas fa-trophy me-2"></i>Ver La Liga
+        </button>
+        <button class="btn btn-outline-light btn-lg shadow-sm" routerLink="/random">
+          <i class="fas fa-random me-2"></i>Equipo Aleatorio
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de características -->
+  <div class="features-section">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Explora el fútbol español</h2>
+      
+      <div class="row g-4">
+        <!-- Tarjeta de búsqueda -->
+        <div class="col-md-4">
+          <div class="feature-card search-card">
+            <div class="icon-wrapper">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>Buscar Equipos</h3>
+            <p>Encuentra información detallada sobre cualquier equipo de La Liga española por nombre o inicial</p>
+           
+            <button class="btn btn-primary btn-block" routerLink="/search">
+              <span>Buscar Equipos</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Tarjeta de La Liga -->
+        <div class="col-md-4">
+          <div class="feature-card league-card">
+            <div class="icon-wrapper">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3>La Liga</h3>
+            <p>Consulta la clasificación actualizada, próximos partidos y resultados de la competición</p>
+           
+            <button class="btn btn-danger btn-block" routerLink="/list">
+              <span>Ver Liga</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Tarjeta aleatoria -->
+        <div class="col-md-4">
+          <div class="feature-card random-card">
+            <div class="icon-wrapper">
+              <i class="fas fa-futbol"></i>
+            </div>
+            <h3>Equipo Aleatorio</h3>
+            <p>Descubre información sobre un equipo al azar de La Liga española y amplía tus conocimientos</p>
+            <button class="btn btn-success btn-block" routerLink="/random">
+              <span>Sorpréndeme</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estadísticas rápidas -->
+  <div class="stats-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-3 col-6 mb-4 mb-md-0">
+          <div class="stat-item">
+            <div class="stat-value">20</div>
+            <div class="stat-label">Equipos</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4 mb-md-0">
+          <div class="stat-item">
+            <div class="stat-value">380</div>
+            <div class="stat-label">Partidos</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-value">500+</div>
+            <div class="stat-label">Jugadores</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-value">93</div>
+            <div class="stat-label">Temporadas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
