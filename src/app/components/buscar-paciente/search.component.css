@@ -1,0 +1,43 @@
+/* Estilo para el placeholder */
+input::placeholder {
+  color: #aaa !important;
+  opacity: 1;
+}
+
+/* Para Firefox */
+input::-moz-placeholder {
+  color: #aaa !important;
+  opacity: 1;
+}
+
+/* Para Chrome y Edge */
+input::-webkit-input-placeholder {
+  color: #aaa !important;
+}
+
+/* Estilos para el autocompletado */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #212529 inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: white;
+}
+
+/* Firefox */
+input:autofill {
+  background: #212529 !important;
+  color: white !important;
+}
+
+/* Eliminar el borde azul en el foco del input */
+.form-control:focus, .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+select:active {
+  background-color: #007bff;
+}

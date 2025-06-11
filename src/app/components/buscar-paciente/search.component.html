@@ -1,0 +1,65 @@
+<div class="py-5">
+  <div class="row justify-content-center">
+      <div class="col">
+          <form #searchForm="ngForm">
+              <div class="input-group">
+                  <select class="form-select bg-dark text-white border-secondary" style="max-width: 150px;" [(ngModel)]="searchType" name="searchType">
+                    <option value="n">Nombre</option>
+                    <option value="f">Primera letra</option>
+                    <option value="all">Todos los equipos</option>
+                  </select>
+                  <input type="text" [(ngModel)]="searchInput" name="searchInput" class="form-control bg-dark text-white border-secondary" placeholder="Buscar equipo...">
+                  <button class="btn btn-primary" type="button" (click)="search(searchType)">Buscar</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+<!-- Indicador de carga -->
+<div class="row" *ngIf="loading">
+  <div class="col-12 text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <p class="mt-2">Cargando equipos...</p>
+  </div>
+</div>
+
+<!-- Resultados de búsqueda -->
+<div class="row" *ngIf="!loading">
+  <!-- Mostrar mensaje si no hay resultados -->
+  <div class="col-12 text-center" *ngIf="result && result.length === 0">
+    <h3 class="mb-5">No se encontraron equipos</h3>
+  </div>
+
+  <!-- Mostrar tarjetas de resultados -->
+  <div class="col-md-4 mb-4" *ngFor="let team of result">
+    <div class="card h-100 bg-dark text-white border border-secondary">
+      <!-- Escudo del equipo -->
+      <div class="text-center pt-3">
+        <img [src]="team.crest" class="card-img-top" style="max-height: 150px; width: auto;" [alt]="team.name">
+      </div>
+      
+      <div class="card-body">
+        <!-- Nombre del equipo -->
+        <h5 class="card-title text-center">{{ team.name | uppercase }}</h5>
+
+        <!-- Información adicional del equipo -->
+        <p class="card-text" *ngIf="team.shortName">También conocido como: {{ team.shortName }}</p>
+      </div>
+
+      <!-- Detalles del equipo -->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item bg-dark text-white border-0" *ngIf="team.founded"><b>Fundado en:</b> {{ team.founded }}</li>
+        <li class="list-group-item bg-dark text-white border-0" *ngIf="team.venue"><b>Estadio:</b> {{ team.venue }}</li>
+        <li class="list-group-item bg-dark text-white border-0" *ngIf="team.clubColors"><b>Colores:</b> {{ team.clubColors }}</li>
+      </ul>
+
+      <!-- Botón de detalles -->
+      <div class="card-body text-center">
+        <button class="btn btn-primary" (click)="details(team.id)">Ver detalles</button>
+      </div>
+    </div>
+  </div>
+</div>
