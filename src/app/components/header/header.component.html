@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" routerLink="/home">
+      <img src="assets/logo-football.png" alt="Football Data España" class="logo" height="40">
+      Football Data España
+    </a>
+
+    <!-- Botón de hamburguesa -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú de navegación -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Inicio</a>
+        <a class="nav-link" routerLink="/search" routerLinkActive="active">Buscar</a>
+        <a class="nav-link" routerLink="/list" routerLinkActive="active">La Liga</a>
+        <a class="nav-link" routerLink="/random" routerLinkActive="active">Aleatorio</a>
+        <a class="nav-link" routerLink="/about" routerLinkActive="active">Acerca de</a>
+      </div>
+    </div>
+  </div>
+</nav>
