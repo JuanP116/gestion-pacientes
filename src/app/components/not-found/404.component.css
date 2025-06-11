@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+      
+      body { 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: rgba(0,0,0,0.87); 
+        font-family: 'Poppins', sans-serif; 
+        margin: 0; 
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      #message { 
+        background: rgba(255, 255, 255, 0.95);
+        max-width: 400px; 
+        padding: 40px 32px; 
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        transform: translateY(0);
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      #message h2 { 
+        color: #ff6b6b; 
+        font-weight: bold; 
+        font-size: 60px; 
+        margin: 0;
+        text-shadow: 3px 3px 0 rgba(255,107,107,0.2);
+      }
+      
+      #message h1 { 
+        font-size: 26px; 
+        font-weight: 600; 
+        color: #333;
+        margin: 10px 0 24px;
+      }
+      
+      #message p { 
+        line-height: 160%; 
+        margin: 20px 0; 
+        font-size: 16px; 
+        color: #555;
+      }
+      
+      
+      #message a:hover {
+        background: #1e3799;
+        transform: translateY(-3px);
+        box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+      }
+      
+      #message code {
+        background: #f8f9fa;
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #e84393;
+      }
+      
+      @media (max-width: 600px) {
+        #message { 
+          margin: 20px;
+          width: 100%;
+        }
+        body { 
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+      }
