@@ -1,0 +1,175 @@
+<div class="py-5">
+  <h1 class="display-4 fw-bold text-center mb-5">La Liga Española</h1>
+
+  <!-- Indicador de carga -->
+  <div class="row" *ngIf="loading">
+    <div class="col-12 text-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <p class="mt-2">Cargando datos de La Liga...</p>
+    </div>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div class="alert alert-danger" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="row" *ngIf="!loading">
+    <!-- Equipos -->
+    <div class="col-md-4 mb-4 mb-md-0">
+      <div class="card bg-dark text-white border-secondary">
+        <div class="card-header">
+          <h2 class="mb-0">Equipos</h2>
+        </div>
+        <div class="card-body list-container" style="max-height: 600px; overflow-y: auto;">
+          <ul class="list-group list-group-flush">
+            <!-- Recorrer los equipos -->
+            <li class="list-group-item bg-dark text-white border-secondary d-flex align-items-center" *ngFor="let team of teams">
+              <!-- Escudo del equipo -->
+              <img [src]="team.crest" [alt]="team.name" class="me-2" style="height: 30px; width: auto;">
+              <!-- Enlace al equipo -->
+              <a class="text-decoration-none text-white link-info" [routerLink]="['/details', team.id]">{{ team.name }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Próximos partidos -->
+    <div class="col-md-4 mb-4 mb-md-0">
+      <div class="card bg-dark text-white border-secondary">
+        <div class="card-header">
+          <h2 class="mb-0">Próximos partidos</h2>
+        </div>
+        <div class="card-body list-container" style="max-height: 600px; overflow-y: auto;">
+          <div class="list-group list-group-flush">
+            <!-- Recorrer los próximos partidos -->
+            <div class="list-group-item bg-dark text-white border-secondary mb-2" *ngFor="let match of upcomingMatches">
+              <!-- Formatear el partido con el pipe -->
+              <ng-container *ngIf="match | matchResult as formattedMatch">
+                <div class="mb-1 text-center">
+                  <small>{{ formattedMatch.formattedDate }} - {{ formattedMatch.formattedTime }}</small>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <!-- Equipo local -->
+                  <div class="d-flex align-items-center">
+                    <img [src]="match.homeTeam.crest" [alt]="match.homeTeam.name" class="me-2" style="height: 25px; width: auto;">
+                    <span>{{ match.homeTeam.shortName || match.homeTeam.name }}</span>
+                  </div>
+                  
+                  <!-- Resultado -->
+                  <div>
+                    <span class="badge bg-secondary">{{ formattedMatch.formattedResult }}</span>
+                  </div>
+                  
+                  <!-- Equipo visitante -->
+                  <div class="d-flex align-items-center">
+                    <span>{{ match.awayTeam.shortName || match.awayTeam.name }}</span>
+                    <img [src]="match.awayTeam.crest" [alt]="match.awayTeam.name" class="ms-2" style="height: 25px; width: auto;">
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partidos recientes -->
+    <div class="col-md-4 mb-4 mb-md-0">
+      <div class="card bg-dark text-white border-secondary">
+        <div class="card-header">
+          <h2 class="mb-0">Resultados recientes</h2>
+        </div>
+        <div class="card-body list-container" style="max-height: 600px; overflow-y: auto;">
+          <div class="list-group list-group-flush">
+            <!-- Recorrer los partidos recientes -->
+            <div class="list-group-item bg-dark text-white border-secondary mb-2" *ngFor="let match of recentMatches">
+              <!-- Formatear el partido con el pipe -->
+              <ng-container *ngIf="match | matchResult as formattedMatch">
+                <div class="mb-1 text-center">
+                  <small>{{ formattedMatch.formattedDate }}</small>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <!-- Equipo local -->
+                  <div class="d-flex align-items-center">
+                    <img [src]="match.homeTeam.crest" [alt]="match.homeTeam.name" class="me-2" style="height: 25px; width: auto;">
+                    <span>{{ match.homeTeam.shortName || match.homeTeam.name }}</span>
+                  </div>
+                  
+                  <!-- Resultado -->
+                  <div>
+                    <span class="badge" [ngClass]="{'bg-success': formattedMatch.scoreHome > formattedMatch.scoreAway, 'bg-danger': formattedMatch.scoreHome < formattedMatch.scoreAway, 'bg-warning': formattedMatch.scoreHome === formattedMatch.scoreAway}">
+                      {{ formattedMatch.scoreHome }} - {{ formattedMatch.scoreAway }}
+                    </span>
+                  </div>
+                  
+                  <!-- Equipo visitante -->
+                  <div class="d-flex align-items-center">
+                    <span>{{ match.awayTeam.shortName || match.awayTeam.name }}</span>
+                    <img [src]="match.awayTeam.crest" [alt]="match.awayTeam.name" class="ms-2" style="height: 25px; width: auto;">
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Clasificación -->
+  <div class="row mt-5" *ngIf="!loading && standings.length > 0">
+    <div class="col-12">
+      <div class="card bg-dark text-white border-secondary">
+        <div class="card-header">
+          <h2 class="mb-0">Clasificación</h2>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-dark table-hover">
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Equipo</th>
+                  <th class="text-center">PJ</th>
+                  <th class="text-center">G</th>
+                  <th class="text-center">E</th>
+                  <th class="text-center">P</th>
+                  <th class="text-center">GF</th>
+                  <th class="text-center">GC</th>
+                  <th class="text-center">DG</th>
+                  <th class="text-center">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let team of standings">
+                  <td>{{ team.position }}</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img [src]="team.team.crest" [alt]="team.team.name" class="me-2" style="height: 25px; width: auto;">
+                      <a class="text-decoration-none text-white link-info" [routerLink]="['/details', team.team.id]">
+                        {{ team.team.name }}
+                      </a>
+                    </div>
+                  </td>
+                  <td class="text-center">{{ team.playedGames }}</td>
+                  <td class="text-center">{{ team.won }}</td>
+                  <td class="text-center">{{ team.draw }}</td>
+                  <td class="text-center">{{ team.lost }}</td>
+                  <td class="text-center">{{ team.goalsFor }}</td>
+                  <td class="text-center">{{ team.goalsAgainst }}</td>
+                  <td class="text-center">{{ team.goalDifference }}</td>
+                  <td class="text-center fw-bold">{{ team.points }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
